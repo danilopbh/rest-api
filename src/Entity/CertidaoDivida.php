@@ -24,6 +24,9 @@ class CertidaoDivida
     #[ORM\JoinColumn(nullable: false)]
     private ?Contribuinte $contribuinte = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +64,18 @@ class CertidaoDivida
     public function setContribuinte(?Contribuinte $contribuinte): static
     {
         $this->contribuinte = $contribuinte;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

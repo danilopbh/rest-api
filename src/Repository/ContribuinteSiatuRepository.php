@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\CertidaoDivida;
+use App\Entity\ContribuinteSiatu;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<CertidaoDivida>
+ * @extends ServiceEntityRepository<Contribuinte>
  */
-class CertidaoDividaRepository extends ServiceEntityRepository
+class ContribuinteSiatuRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CertidaoDivida::class);
+        parent::__construct($registry, ContribuinteSiatu::class);
     }
 
     //    /**
-    //     * @return CertidaoDivida[] Returns an array of CertidaoDivida objects
+    //     * @return Contribuinte[] Returns an array of Contribuinte objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class CertidaoDividaRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?CertidaoDivida
+    //    public function findOneBySomeField($value): ?Contribuinte
     //    {
     //        return $this->createQueryBuilder('c')
     //            ->andWhere('c.exampleField = :val')

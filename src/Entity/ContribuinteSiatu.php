@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ContribuinteRepository;
+use App\Repository\ContribuinteSiatuRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ContribuinteRepository::class)]
+#[ORM\Entity(repositoryClass: ContribuinteSiatuRepository::class)]
 class Contribuinte
 {
     #[ORM\Id]
@@ -25,9 +25,9 @@ class Contribuinte
     private ?string $adress = null;
 
     /**
-     * @var Collection<int, CertidaoDivida>
+     * @var Collection<int, CertidaoDividaSiatu>
      */
-    #[ORM\OneToMany(targetEntity: CertidaoDivida::class, mappedBy: 'contribuinte')]
+    #[ORM\OneToMany(targetEntity: CertidaoDividaSiatu::class, mappedBy: 'contribuinte')]
     private Collection $certidaoDividas;
 
     public function __construct()
@@ -84,7 +84,7 @@ class Contribuinte
         return $this->certidaoDividas;
     }
 
-    public function addCertidaoDivida(CertidaoDivida $certidaoDivida): static
+    public function addCertidaoDivida(CertidaoDividaSiatu $certidaoDivida): static
     {
         if (!$this->certidaoDividas->contains($certidaoDivida)) {
             $this->certidaoDividas->add($certidaoDivida);
@@ -94,7 +94,7 @@ class Contribuinte
         return $this;
     }
 
-    public function removeCertidaoDivida(CertidaoDivida $certidaoDivida): static
+    public function removeCertidaoDivida(CertidaoDividaSiatu $certidaoDivida): static
     {
         if ($this->certidaoDividas->removeElement($certidaoDivida)) {
             // set the owning side to null (unless already changed)

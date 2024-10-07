@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\CertidaoDividaRepository;
+use App\Repository\CertidaoDividaSiatuRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CertidaoDividaRepository::class)]
-class CertidaoDivida
+#[ORM\Entity(repositoryClass: CertidaoDividaSiatuRepository::class)]
+class CertidaoDividaSiatu
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

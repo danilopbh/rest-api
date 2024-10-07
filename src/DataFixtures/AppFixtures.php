@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Contribuinte;
 use App\Entity\CertidaoDivida;
+use App\Entity\CertidaoDividaSiatu;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -26,7 +27,7 @@ class AppFixtures extends Fixture
             for ($j = 0; $j < 3; $j++) {
                 $pdfFileName = 'certidao_divida_' . $j . '.pdf';
 
-                $certidao = new CertidaoDivida();
+                $certidao = new CertidaoDividaSiatu();
 
 
                 $certidao->setDescription('Certidao divida' .' - '. $j);

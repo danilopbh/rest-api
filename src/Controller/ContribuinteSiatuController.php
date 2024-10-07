@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Controller;
-use App\Repository\ContribuinteRepository;
-
+use App\Repository\ContribuinteSiatuRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Component\Routing\Attribute\Route;
 
-class ContribuinteController extends AbstractController
+class ContribuinteSiatuController extends AbstractController
 {
     #[Route('/contribuinte', name: 'app_contribuinte')]
     public function index(): JsonResponse
@@ -33,7 +32,7 @@ class ContribuinteController extends AbstractController
     }
 
     #[Route('/api/contribuintes', name: 'get_contribuintes', methods: ['GET'])]
-    public function getContribuintes(ContribuinteRepository $contribuinteRepository): JsonResponse
+    public function getContribuintes(ContribuinteSiatuRepository $contribuinteRepository): JsonResponse
     {
         // Fetch all Contribuintes with their CertidaoDivida relations
         $contribuintes = $contribuinteRepository->findAll();

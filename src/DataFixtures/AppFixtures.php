@@ -24,8 +24,13 @@ class AppFixtures extends Fixture
             $contribuinte->setAdress($faker->address);
             // Criar Certidões de Dívida para o Contribuinte
             for ($j = 0; $j < 3; $j++) {
+                $pdfFileName = 'certidao_divida_' . $j . '.pdf';
+
                 $certidao = new CertidaoDivida();
+
+
                 $certidao->setDescription('Certidao divida' .' - '. $j);
+                $certidao->setPdfdivida($pdfFileName);
                 if ($j%2 != 0){ 
                   
                     $certidao->setDatePayment($faker->dateTimeThisDecade);

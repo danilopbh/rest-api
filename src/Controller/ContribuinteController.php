@@ -54,6 +54,7 @@ class ContribuinteController extends AbstractController
                     'descricao' => $certidaoDivida->getDescription(),
                     'data_payment' => $datePaymentFormatted,
                     'valor' => $certidaoDivida->getValue(),
+                    'pdfdivida' => $certidaoDivida->getPdfdivida(),
                 ];
             }
 

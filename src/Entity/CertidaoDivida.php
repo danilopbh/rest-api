@@ -27,6 +27,9 @@ class CertidaoDivida
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\Column(type: Types::BLOB, nullable: true)]
+    private $pdfdivida = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class CertidaoDivida
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPdfdivida()
+    {
+        return $this->pdfdivida;
+    }
+
+    public function setPdfdivida($pdfdivida): static
+    {
+        $this->pdfdivida = $pdfdivida;
 
         return $this;
     }

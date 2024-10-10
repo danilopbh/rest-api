@@ -16,7 +16,7 @@ class CertidaoDividaSupp
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?ContribuinteSupp $id_contribuinte_supp = null;
+    private ?ContribuinteSupp $contribuinte_supp = null;
 
     #[ORM\Column]
     private ?float $valor = null;
@@ -30,9 +30,6 @@ class CertidaoDividaSupp
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $data_vencimento = null;
 
-    #[ORM\ManyToOne(inversedBy: 'certidaoDividaSupps')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?ContribuinteSupp $contribuinte_supp = null;
 
     public function getId(): ?int
     {
@@ -46,14 +43,14 @@ class CertidaoDividaSupp
         return $this;
     }
 
-    public function getIdContribuinteSupp(): ?ContribuinteSupp
+    public function getContribuinteSupp(): ?ContribuinteSupp
     {
-        return $this->id_contribuinte_supp;
+        return $this->contribuinte_supp;
     }
 
-    public function setIdContribuinteSupp(?ContribuinteSupp $id_contribuinte_supp): static
+    public function setContribuinteSupp(?ContribuinteSupp $contribuinte_supp): static
     {
-        $this->id_contribuinte_supp = $id_contribuinte_supp;
+        $this->contribuinte_supp = $contribuinte_supp;
 
         return $this;
     }
@@ -106,15 +103,5 @@ class CertidaoDividaSupp
         return $this;
     }
 
-    public function getContribuinteSupp(): ?ContribuinteSupp
-    {
-        return $this->contribuinte_supp;
-    }
-
-    public function setContribuinteSupp(?ContribuinteSupp $contribuinte_supp): static
-    {
-        $this->contribuinte_supp = $contribuinte_supp;
-
-        return $this;
-    }
+   
 }

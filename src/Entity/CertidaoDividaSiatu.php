@@ -16,7 +16,7 @@ class CertidaoDividaSiatu
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?ContribuinteSiatu $contribuinte_id = null;
+    private ?ContribuinteSiatu $contribuinte_siatu = null;
 
     #[ORM\Column]
     private ?float $valor = null;
@@ -42,14 +42,14 @@ class CertidaoDividaSiatu
         return $this;
     }
 
-    public function getContribuinteId(): ?ContribuinteSiatu
+    public function getContribuinteSiatu(): ?ContribuinteSiatu
     {
-        return $this->contribuinte_id;
+        return $this->contribuinte_siatu;
     }
 
-    public function setContribuinteId(?ContribuinteSiatu $contribuinte_id): static
+    public function setContribuinteSiatu(?ContribuinteSiatu $contribuinte_siatu): static
     {
-        $this->contribuinte_id = $contribuinte_id;
+        $this->contribuinte_siatu = $contribuinte_siatu;
 
         return $this;
     }

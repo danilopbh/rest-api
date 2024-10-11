@@ -19,34 +19,39 @@ class ContribuinteSiatuController extends AbstractController
         ]);
     }
 
-
     #[Route('/api/contribuinte/siatu', name: 'app_contribuintes_siatu', methods: ['GET'])]
     public function getContribuintesSiatu(ContribuinteSiatuRepository $contribuinteSiatuRepository): JsonResponse
     {
-        
-       
         // Fetch all Contribuintes with their CertidaoDivida relations
         $contribuintes = $contribuinteSiatuRepository->findAll();
-        
-       dd($contribuintes);
-      
-
         $data = [];
 
         foreach ($contribuintes as $contribuinte) {
-            $certidoes = [];
-            
-            foreach ($contribuinte->getCertidoesDividaSiatu() as $certidaoDivida) {
 
-                
+            $certidoes = [];
+
+            foreach ($contribuinte->getCertidaoDividaSiatu() as $certidaoDivida) {
+
+                // Obter o PDF como string
+                $pdfDivida = $certidaoDivida->getPdfDivida();
+                $pdfContent = '';
+
+                // Verificar se o PDF é um recurso
+                if (is_resource($pdfDivida)) {
+                    $pdfContent = stream_get_contents($pdfDivida); // Lê o conteúdo do recurso
+                    fclose($pdfDivida); // Fecha o recurso após a leitura
+                } elseif (is_string($pdfDivida)) {
+                    $pdfContent = $pdfDivida; // Já é uma string
+                }
+
                 $certidoes[] = [
                     'id' => $certidaoDivida->getId(),
                     'descricao' => $certidaoDivida->getDescricao(),
-                    'dataEmissao' => $certidaoDivida->getDataEmissao()->format('Y-m-d'),
+                    'dataVencimento' => $certidaoDivida->getDataVencimento()->format('Y-m-d'),
+                    'pdfDivida' => base64_encode($pdfContent),
                     'valor' => $certidaoDivida->getValor(),
                 ];
             }
-
             $data[] = [
                 'id' => $contribuinte->getId(),
                 'nome' => $contribuinte->getNome(),

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ContribuinteSiatuRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\Collection;
+
 #[ORM\Entity(repositoryClass: ContribuinteSiatuRepository::class)]
 class ContribuinteSiatu
 {
@@ -21,6 +23,10 @@ class ContribuinteSiatu
 
     #[ORM\Column(length: 255)]
     private ?string $endereco = null;
+
+    #[ORM\OneToMany(targetEntity: CertidaoDividaSiatu::class, mappedBy: 'contribuinte_siatu')]
+    private Collection $certidaoDividaSiatu;
+
 
     public function getId(): ?int
     {
@@ -68,5 +74,10 @@ class ContribuinteSiatu
         $this->endereco = $endereco;
 
         return $this;
+    }
+
+    public function getCertidaoDividaSiatu(): Collection
+    {
+        return $this->certidaoDividaSiatu;
     }
 }

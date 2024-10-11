@@ -27,7 +27,7 @@ class ContribuinteSupp
     /**
      * @var Collection<int, CertidaoDividaSupp>
      */
-    #[ORM\OneToMany(targetEntity: CertidaoDividaSupp::class, mappedBy: 'contribuinte_siatu')]
+    #[ORM\OneToMany(targetEntity: CertidaoDividaSupp::class, mappedBy: 'contribuinte_supp')]
     private Collection $certidaoDividaSupps;
 
     public function __construct()
